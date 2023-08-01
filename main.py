@@ -3,6 +3,15 @@ import math
 def add(x, y):
     return x + y
 
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+
 def display_menu():
     print("Select operation.")
     print("1. Add")
@@ -15,9 +24,9 @@ def display_menu():
     print("0. Exit")
 
 def get_choice():
-    choice = input("Enter choice (0/1): ")
+    choice = input("Enter choice (0/1/2/3/4): ")
 
-    if choice in ('0', '1'):
+    if choice in ('0', '1', '2', '3', '4'):
         return choice
     else:
         print("Invalid choice.")
