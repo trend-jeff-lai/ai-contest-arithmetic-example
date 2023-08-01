@@ -30,27 +30,31 @@ def display_menu():
     print("5. Square root")
     print("6. Square")
     print("7. Cube")
+    print("8. Combined operations")
     print("0. Exit")
 
 def get_choice():
-    choice = input("Enter choice (0/1/2/3/4/5/6/7): ")
+    choice = input("Enter choice (0/1/2/3/4/5/6/7/8): ")
 
-    if choice in ('0', '1', '2', '3', '4', '5', '6', '7'):
+    if choice in ('0', '1', '2', '3', '4', '5', '6', '7', '8'):
         return choice
     else:
         print("Invalid choice.")
         return None
 
-def get_two_input():
+def get_two_number():
     num1 = float(input("Enter first number: "))
     num2 = float(input("Enter second number: "))
     return num1, num2
 
-def get_single_input():
+def get_single_number():
     num = float(input("Enter number: "))
     return num
 
-def perform_calculation(choice, num1, num2):
+def get_combined_statement():
+    return input("Enter combined statement such as 1+2*3: ")
+
+def perform_calculation(choice, num1, num2=None):
     if choice == '1':
         print(num1, "+", num2, "=", add(num1, num2))
     elif choice == '2':
@@ -65,6 +69,8 @@ def perform_calculation(choice, num1, num2):
         print(num1, "*", num1, "=", square(num1))
     elif choice == '7':
         print(num1, "*", num1, "*", num1, "=", cube(num1))
+    elif choice == '8':
+        print(num1, "=", eval(num1))
     else:
         print("Invalid choice.")
 
@@ -78,8 +84,11 @@ if __name__ == "__main__":
             print("Goodbye.")
         else:
             if choice == '5' or choice == '6' or choice == '7':
-                num1 = get_single_input()
-                perform_calculation(choice, num1, None)
+                num1 = get_single_number()
+                perform_calculation(choice, num1)
+            elif choice == '8':
+                num1 = get_combined_statement()
+                perform_calculation(choice, num1)
             else:
-                num1, num2 = get_two_input()
+                num1, num2 = get_two_number()
                 perform_calculation(choice, num1, num2)
